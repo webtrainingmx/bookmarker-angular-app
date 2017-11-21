@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 
@@ -25,6 +27,10 @@ import { BookmarksComponent } from './auth/bookmarks/bookmarks.component';
     // Include it under 'imports' in your application module
     // after BrowserModule.
     HttpClientModule,
+    // Required by Angular Material
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]
