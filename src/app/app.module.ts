@@ -1,8 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Ng2Webstorage } from 'ngx-webstorage';
 
@@ -39,12 +47,16 @@ import { AuthenticationService } from './common/services/authentication.service'
     HttpClientModule,
     RouterModule,
     RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
     // Required by Angular Material
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
     // Auth
     Ng2Webstorage
   ],
