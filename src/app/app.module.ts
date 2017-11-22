@@ -12,6 +12,7 @@ import {
   MatPaginatorModule,
   MatSortModule,
   MatMenuModule,
+  MatDialogModule,
   MatPaginatorIntl
 } from '@angular/material';
 import { NgModule } from '@angular/core';
@@ -37,6 +38,7 @@ import { AuthenticationService } from './common/services/authentication.service'
 import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
 import { WindowReferenceService } from './common/services/window-reference.service';
 import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginator-intl-spanish.provider';
+import { EditBookmarkComponent } from './auth/bookmarks/edit-bookmark/edit-bookmark.component';
 
 
 @NgModule({
@@ -47,7 +49,11 @@ import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginato
     LoginComponent,
     HomeComponent,
     BookmarksComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EditBookmarkComponent
+  ],
+  entryComponents: [
+    EditBookmarkComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +77,7 @@ import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginato
     MatPaginatorModule,
     MatSortModule,
     MatMenuModule,
+    MatDialogModule,
     // Auth
     Ng2Webstorage
   ],
