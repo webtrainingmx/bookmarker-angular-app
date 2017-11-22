@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Bookmark } from './models/bookmark.model';
 import { BookmarksService } from './services/bookmarks.service';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-bookmarks',
@@ -15,7 +15,19 @@ export class BookmarksComponent implements OnInit {
   dataSource: MatTableDataSource<Bookmark>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  // MatPaginator Inputs
+  length = 50;
+  pageSize = 5;
+  pageSizeOptions = [ 5, 10, 25, 100 ];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
   constructor (private _bookmarksService: BookmarksService) {
+  }
+
+  setPageSizeOptions (setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
 
   applyFilter (filterValue: string) {

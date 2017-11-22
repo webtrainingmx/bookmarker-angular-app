@@ -9,7 +9,7 @@ import {
   MatInputModule,
   MatProgressSpinnerModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule, MatPaginatorIntl
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -32,6 +32,7 @@ import { AuthGuard } from './common/guards/auth.guard';
 import { PublicGuard } from './common/guards/public.guard';
 import { AuthenticationService } from './common/services/authentication.service';
 import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
+import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginator-intl-spanish.provider';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
     HttpService,
     PublicGuard, AuthGuard, // Guards
     AuthenticationService,
-    BookmarksService
+    BookmarksService,
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlSpanishProvider }
   ],
   bootstrap: [ AppComponent ]
 })
