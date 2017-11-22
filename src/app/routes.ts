@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './public/login/login.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
-import { HomeComponent } from './public/home/home.component';
+import { HomeComponent } from './auth/home/home.component';
 import { PublicGuard } from './common/guards/public.guard';
 import { AuthGuard } from './common/guards/auth.guard';
 
