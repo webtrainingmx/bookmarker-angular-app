@@ -7,9 +7,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class HttpService {
   apiAuthBaseURL: string;
+  apiBookmarksURL: string;
 
   constructor (protected _http: HttpClient) {
-    this.apiAuthBaseURL = 'http://projects-api.webtraining.zone'; // Config.getAPIURL();
+    this.apiAuthBaseURL = 'http://projects-api.webtraining.zone';
+    this.apiBookmarksURL = 'http://localhost:8080/bookmarker/api/v1/';
   }
 
   public get (url, token): Observable<any> {
