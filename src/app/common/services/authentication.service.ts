@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { SessionStorageService } from 'ngx-webstorage';
-import 'rxjs/add/operator/map';
-import { Config } from '../config';
+import { HttpClient } from '@angular/common/http';
+
+// import { Config } from '../config';
 
 
 @Injectable()
-export class AuthenticationService {
+export class AuthenticationService extends HttpService {
   hasSession = false;
   user;
-  apiBaseURL: string = Config.API_SERVER_URL;
 
-  constructor (public _http: HttpService, public _locker: SessionStorageService) {
+  constructor (public _http: HttpClient, public _locker: SessionStorageService) {
+    super(_http);
   }
 
   public isLoggedIn () {
@@ -24,7 +25,7 @@ export class AuthenticationService {
   }
 
   public logIn (username: string, password: string) {
-    const url = `${this.apiBaseURL}/users/login`;
+    const url = `${this.apiAuthBaseURL}/users/login`;
 
     return this._http.post(url, {
       'username': username,

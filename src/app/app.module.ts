@@ -6,7 +6,8 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -57,6 +58,7 @@ import { AuthenticationService } from './common/services/authentication.service'
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     // Auth
     Ng2Webstorage
   ],

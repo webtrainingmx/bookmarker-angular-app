@@ -9,10 +9,22 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Contraseña" [formControl]="password" [type]="hidePassword ? 'password' : 'text'" required>
-          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <input matInput placeholder="Contraseña" [formControl]="password" [type]="hidePassword ? 'password' : 'text'"
+                 required>
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+            {{hidePassword ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
           <mat-error *ngIf="password.invalid">{{getErrorMessageForPassword()}}</mat-error>
         </mat-form-field>
+
+        <div class="clearfix">
+          <button mat-raised-button color="primary" [disabled]="isLoggingIn">
+            Iniciar
+          </button>
+        </div>
+        <div class="b-spinner clearfix">
+          <mat-spinner *ngIf="isLoggingIn" [diameter]="30"></mat-spinner>
+        </div>
       </div>
 
     </form>

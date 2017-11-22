@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   username = new FormControl('', [ Validators.required ]);
   password = new FormControl('', [ Validators.required ]);
   hidePassword = true;
+  isLoggingIn = false;
 
   constructor (public _authService: AuthenticationService,
                public _router: Router,
@@ -34,19 +35,20 @@ export class LoginComponent implements OnInit {
   onSubmit (event: Event) {
     event.preventDefault();
     console.log(this.username.value, this.password.value);
+    this.isLoggingIn = true;
 
-    // this._authService.logIn(this.user.username, this.user.password).subscribe(
-    //   (data) => {
-    //     this._authService.user = data;
-    //     this._authService.hasSession = true;
-    //     this._locker.store('user', data);
-    //     this._router.navigate([ '/home' ]);
-    //   },
-    //   err => {
-    //     console.error(err);
-    //     this._authService.hasSession = false;
-    //   }
-    // );
+    this._authService.logIn(this.username.value, this.password.value).subscribe(
+      (data) => {
+        this._authService.user = data;
+        this._authService.hasSession = true;
+        this._locker.store('user', data);
+        this._router.navigate([ '/home' ]);
+      },
+      err => {
+        console.error(err);
+        this._authService.hasSession = false;
+      }
+    );
   }
 
 }
