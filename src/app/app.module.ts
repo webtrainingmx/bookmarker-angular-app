@@ -11,6 +11,7 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
+  MatMenuModule,
   MatPaginatorIntl
 } from '@angular/material';
 import { NgModule } from '@angular/core';
@@ -34,6 +35,7 @@ import { AuthGuard } from './common/guards/auth.guard';
 import { PublicGuard } from './common/guards/public.guard';
 import { AuthenticationService } from './common/services/authentication.service';
 import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
+import { WindowReferenceService } from './common/services/window-reference.service';
 import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginator-intl-spanish.provider';
 
 
@@ -68,6 +70,7 @@ import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginato
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatMenuModule,
     // Auth
     Ng2Webstorage
   ],
@@ -76,6 +79,7 @@ import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginato
     PublicGuard, AuthGuard, // Guards
     AuthenticationService,
     BookmarksService,
+    WindowReferenceService,
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlSpanishProvider }
   ],
   bootstrap: [ AppComponent ]

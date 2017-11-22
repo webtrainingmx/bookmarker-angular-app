@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Bookmark } from './models/bookmark.model';
 import { BookmarksService } from './services/bookmarks.service';
 import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
+import { WindowReferenceService } from '../../common/services/window-reference.service';
 
 @Component({
   selector: 'app-bookmarks',
@@ -11,7 +12,7 @@ import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/m
 export class BookmarksComponent implements OnInit {
 
   bookmarks: Array<Bookmark>;
-  displayedColumns = [ 'id', 'title', 'description', 'created' ];
+  displayedColumns = [ 'id', 'title', 'description', 'created', 'actions' ];
   dataSource: MatTableDataSource<Bookmark>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -24,7 +25,11 @@ export class BookmarksComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
 
-  constructor (private _bookmarksService: BookmarksService) {
+  // External window
+  nativeWindow: any;
+
+  constructor (private _bookmarksService: BookmarksService, private _windowRefService: WindowReferenceService) {
+    this.nativeWindow = _windowRefService.getNativeWindow();
   }
 
   setPageSizeOptions (setPageSizeOptionsInput: string) {
@@ -37,6 +42,17 @@ export class BookmarksComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
+  // Actions
+
+  openBookmarkURL (bookmark: Bookmark) {
+    const newWindow = this.nativeWindow.open(bookmark.url);
+  }
+
+  editBookmark (bookmark: Bookmark) {
+
+  }
+
+  // Lifecycle
   ngOnInit () {
     this._bookmarksService.getAll().subscribe(
       (data: Array<Bookmark>) => {
