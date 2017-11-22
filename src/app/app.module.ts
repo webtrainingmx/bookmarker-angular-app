@@ -8,7 +8,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatProgressSpinnerModule,
-  MatTableModule
+  MatTableModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -62,6 +63,7 @@ import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
     MatInputModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    MatPaginatorModule,
     // Auth
     Ng2Webstorage
   ],

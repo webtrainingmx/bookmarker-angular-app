@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Bookmark } from './models/bookmark.model';
 import { BookmarksService } from './services/bookmarks.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-bookmarks',
@@ -13,6 +13,7 @@ export class BookmarksComponent implements OnInit {
   bookmarks: Array<Bookmark>;
   displayedColumns = [ 'id', 'title', 'description', 'created' ];
   dataSource: MatTableDataSource<Bookmark>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor (private _bookmarksService: BookmarksService) {
   }
@@ -28,6 +29,9 @@ export class BookmarksComponent implements OnInit {
       (data: Array<Bookmark>) => {
         this.bookmarks = data;
         this.dataSource = new MatTableDataSource<Bookmark>(this.bookmarks);
+
+        // The paginator can be set after view init if static data!
+        this.dataSource.paginator = this.paginator;
       });
   }
 
