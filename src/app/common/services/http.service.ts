@@ -22,7 +22,7 @@ export class HttpService {
     headers.set('Api-Token', token);
     const options = {
       // This is NOT going to work, since the application/json is never assigned to the immutable object
-      // headers: new HttpHeaders()()
+      // headers: new HttpHeaders()
       //   .set('Content-Type', 'application/json')
       //   .set('Api-Token', token),
       headers: headers
@@ -40,7 +40,7 @@ export class HttpService {
 
     const options = {
       // This is NOT going to work, since the application/json is never assigned to the immutable object
-      // headers: new HttpHeaders()()
+      // headers: new HttpHeaders()
       //   .set('Content-Type', 'application/json')
       //   .set('Api-Token', token),
       headers: headers
@@ -52,13 +52,16 @@ export class HttpService {
   public put (url, payload, token?): Observable<any> {
     // new HttpHeaders() returns an immutable object,
     // so BE SURE you add your headers to the initial instance
-    const headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
-    headers.set('Api-Token', token);
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Api-Token', token);
+    // .set('Authorization', token);
 
     const options = {
       headers: headers
     };
+
+    console.warn('Token', headers.get('Api-Token'), headers.get('Content-Type'));
 
     return this._http.put(url, payload, options);
   }

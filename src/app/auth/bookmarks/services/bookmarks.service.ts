@@ -25,8 +25,7 @@ export class BookmarksService extends HttpService {
 
   update (bookmark: Bookmark): Observable<Bookmark> {
     const url = `${this.apiBookmarksURL}/bookmarks/${bookmark.id}`;
-    console.warn('Request hacia:', url);
-    return this.put(url, bookmark);
+    return this.put(url, bookmark, this._authService.user.api_token);
   }
 
 }
