@@ -5,12 +5,6 @@ import { AuthenticationService } from '../../../common/services/authentication.s
 import { Bookmark } from '../models/bookmark.model';
 import { Observable } from 'rxjs/Observable';
 
-interface UserResponse {
-  login: string;
-  bio: string;
-  company: string;
-}
-
 @Injectable()
 export class BookmarksService extends HttpService {
 

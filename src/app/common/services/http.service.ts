@@ -17,68 +17,68 @@ export class HttpService {
   public get (url, token): Observable<any> {
     // new HttpHeaders() returns an immutable object,
     // so BE SURE you add your headers to the initial instance
-    const headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
-    headers.set('Api-Token', token);
-    const options = {
-      // This is NOT going to work, since the application/json is never assigned to the immutable object
-      // headers: new HttpHeaders()
-      //   .set('Content-Type', 'application/json')
-      //   .set('Api-Token', token),
-      headers: headers
-    };
+    // const headers = new HttpHeaders();
+    // headers.set('Content-Type', 'application/json');
+    // headers.set('Api-Token', token);
+    // const options = {
+    //   // This is NOT going to work, since the application/json is never assigned to the immutable object
+    //   // headers: new HttpHeaders()
+    //   //   .set('Content-Type', 'application/json')
+    //   //   .set('Api-Token', token),
+    //   headers: headers
+    // };
 
-    return this._http.get(url, options);
+    return this._http.get(url);
   }
 
   public post (url, payload, token?): Observable<any> {
     // new HttpHeaders() returns an immutable object,
     // so BE SURE you add your headers to the initial instance
-    const headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
-    headers.set('Api-Token', token);
+    // const headers = new HttpHeaders();
+    // headers.set('Content-Type', 'application/json');
+    // headers.set('Api-Token', token);
 
-    const options = {
-      // This is NOT going to work, since the application/json is never assigned to the immutable object
-      // headers: new HttpHeaders()
-      //   .set('Content-Type', 'application/json')
-      //   .set('Api-Token', token),
-      headers: headers
-    };
+    // const options = {
+    //   // This is NOT going to work, since the application/json is never assigned to the immutable object
+    //   // headers: new HttpHeaders()
+    //   //   .set('Content-Type', 'application/json')
+    //   //   .set('Api-Token', token),
+    //   headers: headers
+    // };
 
-    return this._http.post(url, payload, options);
+    return this._http.post(url, payload);
   }
 
   public put (url, payload, token?): Observable<any> {
     // new HttpHeaders() returns an immutable object,
     // so BE SURE you add your headers to the initial instance
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Api-Token', token);
+    // const headers = new HttpHeaders()
+    //   .set('Content-Type', 'application/json');
+    // .set('Api-Token', token);
     // .set('Authorization', token);
 
-    const options = {
-      headers: headers
-    };
+    // const options = {
+    //   headers: headers
+    // };
 
-    console.warn('Token', headers.get('Api-Token'), headers.get('Content-Type'));
+    // console.warn('Token', headers.get('Api-Token'), headers.get('Content-Type'));
 
-    return this._http.put(url, payload, options);
+    return this._http.put(url, payload);
   }
 
 
   public delete (url, token): Observable<any> {
     // new HttpHeaders() returns an immutable object,
     // so BE SURE you add your headers to the initial instance
-    const headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
-    headers.set('Api-Token', token);
+    // const headers = new HttpHeaders();
+    // headers.set('Content-Type', 'application/json');
+    // headers.set('Api-Token', token);
+    //
+    // const options = {
+    //   headers: headers
+    // };
 
-    const options = {
-      headers: headers
-    };
-
-    return this._http.delete(url, options);
+    return this._http.delete(url);
   }
 
 }

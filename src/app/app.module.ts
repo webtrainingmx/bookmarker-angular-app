@@ -21,25 +21,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Ng2Webstorage } from 'ngx-webstorage';
 
-
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { LoginComponent } from './public/login/login.component';
 import { HomeComponent } from './auth/home/home.component';
 import { BookmarksComponent } from './auth/bookmarks/bookmarks.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
-import { routes } from './routes';
-import { HttpService } from './common/services/http.service';
+import { EditBookmarkComponent } from './auth/bookmarks/edit-bookmark/edit-bookmark.component';
+
 import { AuthGuard } from './common/guards/auth.guard';
 import { PublicGuard } from './common/guards/public.guard';
+import { HttpService } from './common/services/http.service';
 import { AuthenticationService } from './common/services/authentication.service';
+import { TokenInterceptor } from './auth/interceptors/token.interceptor';
+
 import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
 import { WindowReferenceService } from './common/services/window-reference.service';
 import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginator-intl-spanish.provider';
-import { EditBookmarkComponent } from './auth/bookmarks/edit-bookmark/edit-bookmark.component';
 
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,12 @@ import { EditBookmarkComponent } from './auth/bookmarks/edit-bookmark/edit-bookm
     AuthenticationService,
     BookmarksService,
     WindowReferenceService,
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlSpanishProvider }
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlSpanishProvider },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [ AppComponent ]
 })
