@@ -7,7 +7,8 @@ import {
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatTableModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -21,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { LoginComponent } from './public/login/login.component';
-import { HomeComponent } from './public/home/home.component';
+import { HomeComponent } from './auth/home/home.component';
 import { BookmarksComponent } from './auth/bookmarks/bookmarks.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { routes } from './routes';
@@ -29,6 +30,7 @@ import { HttpService } from './common/services/http.service';
 import { AuthGuard } from './common/guards/auth.guard';
 import { PublicGuard } from './common/guards/public.guard';
 import { AuthenticationService } from './common/services/authentication.service';
+import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
 
 
 @NgModule({
@@ -59,13 +61,15 @@ import { AuthenticationService } from './common/services/authentication.service'
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatTableModule,
     // Auth
     Ng2Webstorage
   ],
   providers: [
     HttpService,
     PublicGuard, AuthGuard, // Guards
-    AuthenticationService
+    AuthenticationService,
+    BookmarksService
   ],
   bootstrap: [ AppComponent ]
 })
