@@ -9,7 +9,9 @@ import {
   MatInputModule,
   MatProgressSpinnerModule,
   MatTableModule,
-  MatPaginatorModule, MatPaginatorIntl
+  MatPaginatorModule,
+  MatSortModule,
+  MatPaginatorIntl
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -65,6 +67,7 @@ import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginato
     MatProgressSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
     // Auth
     Ng2Webstorage
   ],
