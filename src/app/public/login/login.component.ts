@@ -3,6 +3,9 @@ import { AuthenticationService } from '../../common/services/authentication.serv
 import { SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ModalErrorLoginComponent } from './modal-error-login/modal-error-login.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -14,20 +17,36 @@ export class LoginComponent implements OnInit {
   password = new FormControl('', [ Validators.required ]);
   hidePassword = true;
   isLoggingIn = false;
+  LABEL_EMPTY = 'Por favor ingresa un valor';
+  PLACEHOLDER_USERNAME = 'Nombre de usuario';
+  PLACEHOLDER_PASSWORD = 'Contraseña';
 
   constructor (public _authService: AuthenticationService,
                public _router: Router,
-               public _locker: SessionStorageService) {
+               public _locker: SessionStorageService,
+               public dialog: MatDialog) {
   }
 
   getErrorMessageForUsername () {
-    return this.username.hasError('required') ? 'Por favor ingresa un valor' : '';
+    const hasError = this.username.hasError('required');
+    return hasError ? this.LABEL_EMPTY : '';
   }
 
   getErrorMessageForPassword () {
-    return this.password.hasError('required') ? 'Por favor ingresa un valor' : '';
+    const hasError = this.password.hasError('required');
+    return hasError ? this.LABEL_EMPTY : '';
   }
 
+  openDialogWithError () {
+    const dialogRef = this.dialog.open(ModalErrorLoginComponent, {
+      height: '400px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
 
   ngOnInit () {
   }
@@ -44,8 +63,12 @@ export class LoginComponent implements OnInit {
         this._locker.store('user', data);
         this._router.navigate([ '/home' ]);
       },
-      err => {
+      (err: HttpErrorResponse) => {
+        if ( err.status === 406 ) {
+          this.openDialogWithError();
+        }
         console.error(err);
+        this.isLoggingIn = false;
         this._authService.hasSession = false;
       }
     );

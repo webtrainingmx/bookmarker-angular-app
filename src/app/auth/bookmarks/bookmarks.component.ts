@@ -64,7 +64,7 @@ export class BookmarksComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`); // Pizza!
+      console.log(result);
     });
   }
 

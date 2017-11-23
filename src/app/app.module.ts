@@ -42,6 +42,7 @@ import { WindowReferenceService } from './common/services/window-reference.servi
 import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginator-intl-spanish.provider';
 
 import { routes } from './routes';
+import { ModalErrorLoginComponent } from './public/login/modal-error-login/modal-error-login.component';
 
 @NgModule({
   declarations: [
@@ -52,10 +53,12 @@ import { routes } from './routes';
     HomeComponent,
     BookmarksComponent,
     NotFoundComponent,
-    EditBookmarkComponent
+    EditBookmarkComponent,
+    ModalErrorLoginComponent
   ],
   entryComponents: [
-    EditBookmarkComponent
+    EditBookmarkComponent,
+    ModalErrorLoginComponent
   ],
   imports: [
     BrowserModule,

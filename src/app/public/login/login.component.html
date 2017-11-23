@@ -1,15 +1,21 @@
 <div class="row">
   <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+    <div class="b-image">
+      <img src="/assets/img/logo-512.png" alt="" width="128">
+      <span>Bookmarker</span>
+    </div>
+
     <form #loginForm="ngForm" (ngSubmit)="onSubmit($event)">
 
       <div class="b-controls-container">
         <mat-form-field>
-          <input matInput placeholder="Nombre de usuario" [formControl]="username" required>
+          <input matInput placeholder="{{PLACEHOLDER_USERNAME}}" [formControl]="username" required>
           <mat-error *ngIf="username.invalid">{{getErrorMessageForUsername()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Contraseña" [formControl]="password" [type]="hidePassword ? 'password' : 'text'"
+          <input matInput placeholder="{{PLACEHOLDER_PASSWORD}}" [formControl]="password"
+                 [type]="hidePassword ? 'password' : 'text'"
                  required>
           <mat-icon matSuffix (click)="hidePassword = !hidePassword">
             {{hidePassword ? 'visibility' : 'visibility_off'}}
@@ -17,8 +23,8 @@
           <mat-error *ngIf="password.invalid">{{getErrorMessageForPassword()}}</mat-error>
         </mat-form-field>
 
-        <div class="clearfix">
-          <button mat-raised-button color="primary" [disabled]="isLoggingIn">
+        <div class="b-submit clearfix">
+          <button mat-raised-button color="primary" [disabled]="(username.invalid || password.invalid) || isLoggingIn">
             Iniciar
           </button>
         </div>
