@@ -14,12 +14,13 @@ export class TokenInterceptor implements HttpInterceptor {
     // https://github.com/angular/angular/issues/18224
 
     const auth = this.injector.get(AuthenticationService);
+    const token = auth.user && auth.user.api_token ? auth.user.api_token : '';
 
     request = request.clone({
       setHeaders: {
-        'Api-Token': auth.user.api_token,
+        'Api-Token': token,
         // TODO: Replace following line with an actual Base64 | JWT-based token
-        'Authorization': `User ${auth.user.api_token}`
+        'Authorization': `User ${token}`
       }
     });
 

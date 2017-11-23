@@ -19,7 +19,9 @@
     <!-- Title Column -->
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Título</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        <a href="#" (click)="openBookmarkURL(element,$event)">{{element.title}}</a>
+      </mat-cell>
     </ng-container>
 
     <!-- Description Column -->
@@ -35,13 +37,14 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Acciones</mat-header-cell>
 
       <mat-cell *matCellDef="let element">
-        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="openBookmarkURL(element)">Open</button>
+          <button mat-menu-item (click)="openBookmarkURL(element, $event)">Open</button>
           <button mat-menu-item (click)="editBookmark(element)">Edit</button>
         </mat-menu>
       </mat-cell>
@@ -60,9 +63,9 @@
   </mat-paginator>
 
   <!--<div *ngIf="pageEvent">-->
-    <!--<h5>Page Change Event Properties</h5>-->
-    <!--<div>List length: {{pageEvent.length}}</div>-->
-    <!--<div>Page size: {{pageEvent.pageSize}}</div>-->
-    <!--<div>Page index: {{pageEvent.pageIndex}}</div>-->
+  <!--<h5>Page Change Event Properties</h5>-->
+  <!--<div>List length: {{pageEvent.length}}</div>-->
+  <!--<div>Page size: {{pageEvent.pageSize}}</div>-->
+  <!--<div>Page index: {{pageEvent.pageIndex}}</div>-->
   <!--</div>-->
 </div>

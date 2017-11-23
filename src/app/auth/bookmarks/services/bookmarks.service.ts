@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../../../common/services/http.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../../../common/services/authentication.service';
 import { Bookmark } from '../models/bookmark.model';
 import { Observable } from 'rxjs/Observable';

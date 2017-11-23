@@ -47,7 +47,8 @@ export class BookmarksComponent implements OnInit {
 
   // Actions
 
-  openBookmarkURL (bookmark: Bookmark) {
+  openBookmarkURL (bookmark: Bookmark, event: Event) {
+    event.preventDefault();
     const newWindow = this.nativeWindow.open(bookmark.url);
   }
 
