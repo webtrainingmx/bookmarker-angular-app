@@ -1,2 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+$color-blue: #2780E3;
+$color-blue-light: #1986FF;
+$color-brown: #B27200;
+$color-orange: #FFA200;
+
+h1 {
+  color: $color-brown;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+a {
+  color: $color-brown;
+}

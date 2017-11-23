@@ -1,6 +1,13 @@
 .b-footer {
-  min-height: 300px;
-  background-color: #2780e3;
+  min-height: 270px;
+  background-color: #2780E3;
+  color: white;
+  padding-top: 15px;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
 
   .navbar {
     margin-bottom: 0;
