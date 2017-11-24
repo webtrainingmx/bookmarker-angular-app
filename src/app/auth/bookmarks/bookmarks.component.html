@@ -27,13 +27,13 @@
     <!-- Description Column -->
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.description}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.description | cutStringInWords:10 }}</mat-cell>
     </ng-container>
 
     <!-- Created Column -->
     <ng-container matColumnDef="created">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Creado</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.created}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.created | date }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
