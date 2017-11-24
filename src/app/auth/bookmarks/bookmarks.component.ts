@@ -4,6 +4,7 @@ import { BookmarksService } from './services/bookmarks.service';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { WindowReferenceService } from '../../common/services/window-reference.service';
 import { EditBookmarkComponent } from './edit-bookmark/edit-bookmark.component';
+import { BookmarksResponse } from './models/bookmarks-response.model';
 
 @Component({
   selector: 'app-bookmarks',
@@ -71,8 +72,8 @@ export class BookmarksComponent implements OnInit {
   // Lifecycle
   ngOnInit () {
     this._bookmarksService.getAll().subscribe(
-      (data: Array<Bookmark>) => {
-        this.bookmarks = data;
+      (data: BookmarksResponse) => {
+        this.bookmarks = data.bookmarks;
         this.dataSource = new MatTableDataSource<Bookmark>(this.bookmarks);
 
         // The paginator can be set after view init if static data!
