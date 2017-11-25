@@ -11,7 +11,8 @@ export class HttpService {
 
   constructor (protected _http: HttpClient) {
     this.apiAuthBaseURL = 'http://projects-api.webtraining.zone';
-    this.apiBookmarksURL = 'http://localhost:8765'; // 'http://localhost:8080/bookmarker/api/v1';
+    this.apiBookmarksURL = 'http://bookmarks-api-cakephp.webtraining.zone';
+    // 'http://localhost:8765'; // 'http://localhost:8080/bookmarker/api/v1';
   }
 
   public get (url, token): Observable<any> {
