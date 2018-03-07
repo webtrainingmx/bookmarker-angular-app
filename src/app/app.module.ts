@@ -45,6 +45,7 @@ import { routes } from './routes';
 import { ModalErrorLoginComponent } from './public/login/modal-error-login/modal-error-login.component';
 import { CutStringInWordsPipe } from './common/pipes/cut-string-in-words.pipe';
 import { DemoComponent } from './public/demo/demo.component';
+import { 404Component } from './public/404/404.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DemoComponent } from './public/demo/demo.component';
     EditBookmarkComponent,
     ModalErrorLoginComponent,
     CutStringInWordsPipe,
-    DemoComponent
+    DemoComponent,
+    404Component
   ],
   entryComponents: [
     EditBookmarkComponent,
