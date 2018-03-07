@@ -44,6 +44,7 @@ import { MatPaginatorIntlSpanishProvider } from './common/paginator/mat-paginato
 import { routes } from './routes';
 import { ModalErrorLoginComponent } from './public/login/modal-error-login/modal-error-login.component';
 import { CutStringInWordsPipe } from './common/pipes/cut-string-in-words.pipe';
+import { DemoComponent } from './public/demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CutStringInWordsPipe } from './common/pipes/cut-string-in-words.pipe';
     NotFoundComponent,
     EditBookmarkComponent,
     ModalErrorLoginComponent,
-    CutStringInWordsPipe
+    CutStringInWordsPipe,
+    DemoComponent
   ],
   entryComponents: [
     EditBookmarkComponent,
