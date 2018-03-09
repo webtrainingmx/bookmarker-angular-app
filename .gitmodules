@@ -1,0 +1,9 @@
+[submodule "submodules/bootstrap"]
+	path = submodules/bootstrap
+	url = https://github.com/twbs/bootstrap.git
+[submodule "submodules/moment"]
+	path = submodules/moment
+	url = https://github.com/moment/moment.git
+[submodule "submodules/template-system-handlebars-diciembre-2017"]
+	path = submodules/template-system-handlebars-diciembre-2017
+	url = https://github.com/webtrainingmx/template-system-handlebars-diciembre-2017.git
